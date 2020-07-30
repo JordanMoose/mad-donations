@@ -1,7 +1,7 @@
 # MAD Donations Backend
 
 ## Usage
-To run server in development mode, open /backend in the shell.
+To run server in development mode, open /backend in the shell and run:
 ```bash
 export FLASK_APP=server
 export FLASK_ENV=development
