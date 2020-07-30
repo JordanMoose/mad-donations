@@ -4,6 +4,18 @@ app = Flask(__name__)
 @app.route("/")
 def hello():
     return "Hello World!"
+    
+@app.route("/about/")
+def about():
+    return "This is what we're all about!"
+
+@app.route("/users/")
+def users():
+    return "Users"
+
+@app.route("/users/<string:name>/")
+def getMember(name):
+    return "Hello %s" % name
 
 if __name__ == "__main__":
     app.run()
