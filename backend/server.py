@@ -1,20 +1,16 @@
 from flask import Flask
-from flask_mongoengine import MongoEngine
-from backend.models.models import User
+from pymongo import MongoClient
 
 app = Flask(__name__)
 
-app.config['MONGODB_SETTINGS'] = {
-    'db': 'dbname',
-    'host': 'localhost',
-    'port': 27017
-}
-db = MongoEngine()
-db.init_app(app)
+MONGO_URI = "mongodb+srv://admin:admin@cluster0.vmafb.mongodb.net/Cluster0?retryWrites=true&w=majority"
+client = MongoClient(MONGO_URI)
 
 @app.route("/")
 def hello():
-    return "Hello World!"
+    db = client['mad-donations']
+    user = db.users.find_one()
+    return user['name']
     
 @app.route("/about/")
 def about():
@@ -30,3 +26,4 @@ def getMember(name):
 
 if __name__ == "__main__":
     app.run()
+    client.close()
