@@ -16,15 +16,23 @@ def hello():
 def about():
     return "This is what we're all about!"
 
-@app.route("/users/")
-def users():
-    return "Users"
+@app.route("/home/")
+def home():
+    return "This is the homepage"
 
-@app.route("/users/<string:name>/")
-def getMember(name):
-    return "Hello %s" % name
+@app.route("/login/")
+def login():
+    return "This is the login page"
 
-@app.route("/users/add/<string:name>/")
+@app.route("/account/")
+def account():
+    return "You shouldn't be here!"
+
+@app.route("/account/<int:id>/")
+def getInfo(id):
+    return "This is account %s" % id
+
+@app.route("/account/add/<string:name>/")
 def addMember(name):
     post = {
         'name': name,
@@ -32,6 +40,14 @@ def addMember(name):
     user_id = db.users.insert_one(post).inserted_id
     return "Here is user_id: %s" % user_id
 
+@app.route("/orgs/")
+def orgs():
+    return "Here are all of our orgs"
+
+@app.route("/orgs/<int:id>")
+def getOrg(id):
+    return "This is organization %s" % id
+    
 if __name__ == "__main__":
     app.run()
     client.close()
