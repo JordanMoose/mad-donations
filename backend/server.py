@@ -1,12 +1,11 @@
 from flask import Flask
 from pymongo import MongoClient
+import backend.constants as const
 
 app = Flask(__name__)
 
-MONGO_URI = "mongodb+srv://admin:admin@cluster0.vmafb.mongodb.net/Cluster0?retryWrites=true&w=majority"
-client = MongoClient(MONGO_URI)
+client = MongoClient(const.MONGO_URI)
 db = client['mad-donations']
-
 
 @app.route("/")
 def hello():
