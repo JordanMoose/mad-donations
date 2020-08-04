@@ -14,11 +14,21 @@ def hello():
     return user['name']
 
 # Test endpoint to get React, Flask, and Mongo hooked up
-@app.route("/getUser")
-def about():
-    user = db.users.find_one()
-    return {'name': user['name']}
+@app.route("/getUser/<int:id>/")
+def getUserById(id):
+    user = db.users.find({'_id': id})[0]
+    return {
+        '_id': str(user['_id']),
+        'name': user['name']
+    }
 
+@app.route("/getUser/<string:name>")
+def getUserByName(name):
+    user = db.users.find({'name': name})[0]
+    return {
+        '_id': str(user['_id']),
+        'name': user['name']
+    }
 
 @app.route("/home/")
 def home():
