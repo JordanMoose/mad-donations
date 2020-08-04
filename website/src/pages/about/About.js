@@ -6,7 +6,7 @@ export default () => {
   console.log("Hello");
 
   useEffect(() => {
-    fetch("/getUser")
+    fetch("/getUser/dd")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
