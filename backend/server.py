@@ -13,7 +13,7 @@ def hello():
     user = db.users.find_one()
     return user['name']
 
-
+# Test endpoint to get React, Flask, and Mongo hooked up
 @app.route("/getUser")
 def about():
     user = db.users.find_one()
