@@ -2,15 +2,15 @@ import React, { useState, useEffect } from "react";
 import "./About.css";
 
 export default () => {
+  console.log('Render')
   const [currentUser, setCurrentUser] = useState("baljeet");
-  console.log("Hello");
 
   useEffect(() => {
     fetch("/getUser/name/Danielle")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        setCurrentUser(data.lastName);
+        setCurrentUser(data.firstName);
       });
   }, []);
 
