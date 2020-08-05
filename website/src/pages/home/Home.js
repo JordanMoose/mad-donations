@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
-import './Home.css';
+import './Home.scss';
 import hag from 'assets/images/hag.png';
 import polac from 'assets/images/polac.jpg';
 import unnamed from 'assets/images/unnamed.png';
@@ -16,9 +16,9 @@ export default () => {
     // Homepage image carousel
     <div className="slideshow">
       <Carousel activeIndex={carouselIndex} onSelect={handleCarouselSelect}>
-        <Carousel.Item className="each-slide">
+        <Carousel.Item className="carousel-slide">
           <img
-            className="each-img"
+            className="carousel-img"
             src={hag}
             alt="First slide"
           />
@@ -27,9 +27,9 @@ export default () => {
             <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
           </Carousel.Caption>
         </Carousel.Item>
-        <Carousel.Item className="each-slide">
+        <Carousel.Item className="carousel-slide">
           <img
-            className="each-img"
+            className="carousel-img"
             src={polac}
             alt="Second slide"
           />
@@ -39,9 +39,9 @@ export default () => {
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           </Carousel.Caption>
         </Carousel.Item>
-        <Carousel.Item className="each-slide">
+        <Carousel.Item className="carousel-slide">
           <img
-            className="each-img"
+            className="carousel-img"
             src={unnamed}
             alt="Third slide"
           />
