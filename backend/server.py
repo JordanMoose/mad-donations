@@ -1,8 +1,10 @@
 from flask import Flask
+from flask_cors import CORS
 from pymongo import MongoClient
 import backend.constants as const
 
 app = Flask(__name__)
+CORS(app)
 
 client = MongoClient(const.MONGO_URI)
 db = client['mad-donations']
