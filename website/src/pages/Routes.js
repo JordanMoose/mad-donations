@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import About from "./about/About";
 import Account from "./account/Account"
 import Contact from "./contact/Contact"
@@ -37,6 +37,9 @@ export default () => {
             <Subscribe />
           </Route>
           <Route path="/">
+            <Redirect to="/home" />
+          </Route>
+          <Route >
             <div>You're not supposed to be here!</div>
           </Route>
         </Switch>
