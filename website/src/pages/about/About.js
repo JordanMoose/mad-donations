@@ -6,11 +6,11 @@ export default () => {
   console.log("Hello");
 
   useEffect(() => {
-    fetch("/getUser/dd")
+    fetch("/getUser/name/Danielle")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        setCurrentUser(data.name);
+        setCurrentUser(data.lastName);
       });
   }, []);
 
