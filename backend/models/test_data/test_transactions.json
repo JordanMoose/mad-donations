@@ -1,0 +1,86 @@
+[
+    {
+        "type": "Monthly Charge",
+        "genre": "Civil Rights",
+        "timestamp": "2020-08-04T17:16:32",
+        "amount": 1.67,
+        "purchasedBy": "Danielle Lurie"
+    },
+    {
+        "type": "Monthly Charge",
+        "genre": "Civil Rights",
+        "timestamp": "2020-08-04T17:20:45",
+        "amount": 1.67,
+        "purchasedBy": "Danielle Lurie"
+    },
+    {
+        "type": "Monthly Charge",
+        "genre": "Civil Rights",
+        "timestamp": "2020-08-04T17:26:11",
+        "amount": 1.66,
+        "purchasedBy": "Danielle Lurie"
+    },
+    {
+        "type": "Monthly Charge",
+        "genre": "Civil Rights",
+        "timestamp": "2020-08-04T17:31:32",
+        "amount": 4.00,
+        "purchasedBy": "Jordan Moossazadeh"
+    },
+    {
+        "type": "Monthly Charge",
+        "genre": "Civil Rights",
+        "timestamp": "2020-08-04T17:40:40",
+        "amount": 4.00,
+        "purchasedBy": "Jordan Moossazadeh"
+    },
+    {
+        "type": "Monthly Charge",
+        "genre": "Civil Rights",
+        "timestamp": "2020-08-04T17:49:29",
+        "amount": 4.00,
+        "purchasedBy": "Jordan Moossazadeh"
+    },
+    {
+        "type": "Monthly Charge",
+        "genre": "Environmental",
+        "timestamp": "2020-08-04T17:31:32",
+        "amount": 2.00,
+        "purchasedBy": "Danielle Lurie"
+    },
+    {
+        "type": "Monthly Charge",
+        "genre": "Environmental",
+        "timestamp": "2020-08-04T17:40:40",
+        "amount": 2.00,
+        "purchasedBy": "Danielle Lurie"
+    },
+    {
+        "type": "Monthly Charge",
+        "genre": "Environmental",
+        "timestamp": "2020-08-04T17:49:29",
+        "amount": 2.00,
+        "purchasedBy": "Danielle Lurie"
+    },
+    {
+        "type": "Monthly Charge",
+        "genre": "Environmental",
+        "timestamp": "2020-08-04T17:31:32",
+        "amount": 3.33,
+        "purchasedBy": "Adam Ash"
+    },
+    {
+        "type": "Monthly Charge",
+        "genre": "Environmental",
+        "timestamp": "2020-08-04T17:40:40",
+        "amount": 3.33,
+        "purchasedBy": "Adam Ash"
+    },
+    {
+        "type": "Monthly Charge",
+        "genre": "Environmental",
+        "timestamp": "2020-08-04T17:49:29",
+        "amount": 3.34,
+        "purchasedBy": "Adam Ash"
+    }
+]

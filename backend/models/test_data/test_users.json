@@ -1,0 +1,47 @@
+[{
+    "firstName": "Danielle",
+    "lastName": "Lurie",
+    "email": "dlurie24@gmail.com",
+    "transactions": [
+    ],
+    "activeSubs": [
+        {
+            "genre": "Environnmental",
+            "amount": 6.00
+        },
+        {
+            "genre": "Civil Rights",
+            "amount": 5.00
+        }
+    ]
+},
+{
+    "firstName": "Adam",
+    "lastName": "Ash",
+    "email": "adamash@gmail.com",
+    "transactions": [
+    ],
+    "activeSubs": [
+        {
+            "genre": "Environnmental",
+            "amount": 10.00
+        },
+        {
+            "genre": "Human Services",
+            "amount": 7.00
+        }
+    ]
+},
+{
+    "firstName": "Jordan",
+    "lastName": "Moossazadeh",
+    "email": "jordandmoossazadeh@gmail.com",
+    "transactions": [
+    ],
+    "activeSubs": [
+        {
+            "genre": "Civil Rights",
+            "amount": 12.00
+        }
+    ]
+}]

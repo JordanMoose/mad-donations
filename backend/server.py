@@ -1,9 +1,11 @@
 from flask import Flask
+from flask_cors import CORS
 from pymongo import MongoClient
 import backend.constants as const
 from backend.models.models import User
 
 app = Flask(__name__)
+CORS(app)
 
 client = MongoClient(const.MONGO_URI)
 db = client['mad-donations']
@@ -15,7 +17,7 @@ def hello():
     return user['name']
 
 # Test endpoint to get React, Flask, and Mongo hooked up
-@app.route("/getUser/<int:id>/")
+@app.route("/getUser/id/<string:id>/")
 def getUserById(id):
     # user = User(db.users.find({'_id': id})[0])
     # app.logger.info("etst")
@@ -27,12 +29,13 @@ def getUserById(id):
     # }
     return {}
 
-@app.route("/getUser/<string:name>")
+@app.route("/getUser/name/<string:name>/")
 def getUserByName(name):
-    user = db.users.find({'name': name})[0]
+    user = db.users.find({'firstName': name})[0]
     return {
         '_id': str(user['_id']),
-        'name': user['name']
+        'firstName': user['firstName'],
+        'lastName': user['lastName']
     }
 
 @app.route("/home/")
