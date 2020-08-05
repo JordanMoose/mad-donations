@@ -6,11 +6,11 @@ import {
 } from 'react-bootstrap';
 import './MenuBar.scss';
 
-export default () => {
+export default (activeTab) => {
 	return (
-		<Navbar className="menubar" bg="dark" variant="dark" sticky>
+		<Navbar sticky bg="dark" variant="dark">
 			<Navbar.Brand href="/home">MAD Donations</Navbar.Brand>
-			<Nav>
+			<Nav activeKey={"/" + activeTab}>
 				<Nav.Link href="/about">About</Nav.Link>
 				<Nav.Link href="/orgs">Organizations</Nav.Link>
 				<Nav.Link href="/contact">Contact Us</Nav.Link>
