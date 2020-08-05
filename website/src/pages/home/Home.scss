@@ -1,11 +1,13 @@
-.slideshow {
+.carousel-slide {
   height: 400px;
 
-  .carousel-slide {
-    height: 100%;
-
-    .carousel-img {
-      height: 100%;
-    }
+  .carousel-img {
+    width: 100%;
+    overflow: hidden;
   }
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+  width: 100px;
 }
