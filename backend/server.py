@@ -1,6 +1,7 @@
 from flask import Flask
 from pymongo import MongoClient
 import backend.constants as const
+from backend.models.models import User
 
 app = Flask(__name__)
 
@@ -16,11 +17,15 @@ def hello():
 # Test endpoint to get React, Flask, and Mongo hooked up
 @app.route("/getUser/<int:id>/")
 def getUserById(id):
-    user = db.users.find({'_id': id})[0]
-    return {
-        '_id': str(user['_id']),
-        'name': user['name']
-    }
+    # user = User(db.users.find({'_id': id})[0])
+    # app.logger.info("etst")
+    # app.logger.info(user.get_email)
+
+    # return {
+    #     '_id': str(user['_id']),
+    #     'name': user['name']
+    # }
+    return {}
 
 @app.route("/getUser/<string:name>")
 def getUserByName(name):
@@ -70,5 +75,5 @@ def getOrg(id):
 
 
 if __name__ == "__main__":
-    app.run()
+    #app.run()
     client.close()
