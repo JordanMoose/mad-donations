@@ -4,6 +4,10 @@
   .carousel-img {
     width: 100%;
     overflow: hidden;
+    margin: auto;
+    position: absolute;
+    top: -100%;
+    bottom: -100%;
   }
 }
 

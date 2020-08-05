@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import './Home.scss';
 import MenuBar from 'components/menubar/MenuBar.js';
-import hag from 'assets/images/hag.png';
-import polac from 'assets/images/polac.jpg';
-import unnamed from 'assets/images/unnamed.png';
+import mountain from 'assets/images/mountain.jpg';
+import niagara from 'assets/images/niagara.jpg';
+import waterfall from 'assets/images/waterfall.jpg';
 
 export default () => {
   const [carouselIndex, setCarouselIndex] = useState(0);
@@ -21,21 +21,21 @@ export default () => {
           <Carousel.Item className="carousel-slide">
             <img
               className="carousel-img"
-              src={hag}
+              src={mountain}
               alt="First slide"
             />
           </Carousel.Item>
           <Carousel.Item className="carousel-slide">
             <img
               className="carousel-img"
-              src={polac}
+              src={niagara}
               alt="Second slide"
             />
           </Carousel.Item>
           <Carousel.Item className="carousel-slide">
             <img
               className="carousel-img"
-              src={unnamed}
+              src={waterfall}
               alt="Third slide"
             />
           </Carousel.Item>
