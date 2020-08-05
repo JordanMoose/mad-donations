@@ -16,31 +16,31 @@ export default () => {
     <>
       <MenuBar activeTab="home" />
       {/* Homepage image carousel */}
-      <div>
-        <Carousel activeIndex={carouselIndex} onSelect={handleCarouselSelect}>
-          <Carousel.Item className="carousel-slide">
-            <img
-              className="carousel-img"
-              src={mountain}
-              alt="First slide"
-            />
-          </Carousel.Item>
-          <Carousel.Item className="carousel-slide">
-            <img
-              className="carousel-img"
-              src={niagara}
-              alt="Second slide"
-            />
-          </Carousel.Item>
-          <Carousel.Item className="carousel-slide">
-            <img
-              className="carousel-img"
-              src={waterfall}
-              alt="Third slide"
-            />
-          </Carousel.Item>
-        </Carousel>
-      </div>
+      <Carousel activeIndex={carouselIndex} onSelect={handleCarouselSelect}>
+        <Carousel.Item className="carousel-slide">
+          <img
+            className="carousel-img"
+            src={mountain}
+            alt="First slide"
+          />
+        </Carousel.Item>
+        <Carousel.Item className="carousel-slide">
+          <img
+            className="carousel-img"
+            src={niagara}
+            alt="Second slide"
+          />
+        </Carousel.Item>
+        <Carousel.Item className="carousel-slide">
+          <img
+            className="carousel-img"
+            src={waterfall}
+            alt="Third slide"
+          />
+        </Carousel.Item>
+      </Carousel>
+      <h1>MAD Donations</h1>
+      <p>Your one stop shop for supporting the things you want to be supporting</p>
     </>
   );
 }
