@@ -1,17 +1,27 @@
 from flask import Flask
 from flask_cors import CORS
-from mongoengine import *
+from mongoengine.connection import connect, disconnect
 import backend.constants as const
 from backend.models.models import User
 
 app = Flask(__name__)
 CORS(app)
 
-connect('mad-donations', host=const.MONGO_URI)
+connect(db='mad-donations', host=const.MONGO_URI)
 
 @app.route("/")
 def hello():
     return "Hello world"
+
+@app.route("/connect/")
+def connectToMongo():
+    connect(db='mad-donations', host=const.MONGO_URI)
+    return "Connected to mongo?"
+
+@app.route("/disconnect/")
+def resetMongo():
+    disconnect()
+    return "Maybe disconnected from Mongo"
 
 # Test endpoint to get React, Flask, and Mongo hooked up
 @app.route("/getUser/id/<string:id>/")
@@ -56,12 +66,11 @@ def orgs():
 def getOrg(id):
     return "This is organization %s" % id
 
-@app.route("/createUser")
+@app.route("/createUser/")
 def createUser():
     jeff = User(firstname='Adam', email='adamash99@gmail.com')
-    jeff.save()
+    jeff.save(force_insert=True)
     return "user created maybe"
 
 if __name__ == "__main__":
-    #app.run()
-    client.close()
+    app.run()
