@@ -1,6 +1,4 @@
 from mongoengine import *
-
-
 class Transaction(EmbeddedDocument):
     transactionID = ObjectIdField()
 

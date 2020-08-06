@@ -9,7 +9,6 @@ CORS(app)
 
 connect('mad-donations', host=const.MONGO_URI)
 
-
 @app.route("/")
 def hello():
     return "Hello world"
