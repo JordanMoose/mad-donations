@@ -1,4 +1,13 @@
-from mongoengine import *
+from mongoengine import (
+    Document,
+    EmbeddedDocument,
+    StringField,
+    ObjectIdField,
+    FloatField,
+    EmailField,
+    EmbeddedDocumentListField
+)
+    
 class Transaction(EmbeddedDocument):
     transactionID = ObjectIdField()
 
