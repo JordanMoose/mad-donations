@@ -1,4 +1,13 @@
-from mongoengine import *
+from mongoengine import (
+    Document,
+    EmbeddedDocument,
+    StringField,
+    ObjectIdField,
+    FloatField,
+    EmailField,
+    EmbeddedDocumentListField
+)
+    
 class Transaction(EmbeddedDocument):
     transactionID = ObjectIdField()
 
@@ -14,4 +23,6 @@ class User(Document):
     transactions = EmbeddedDocumentListField(Transaction)
     subscriptions = EmbeddedDocumentListField(Subscription)
 
-    meta = {'collection': 'users'}
+    meta = {
+        'collection': 'users'
+    }
