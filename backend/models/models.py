@@ -13,5 +13,4 @@ class User(Document):
     email = EmailField()
     transactions = EmbeddedDocumentListField(Transaction)
     subscriptions = EmbeddedDocumentListField(Subscription)
-
     meta = {'collection': 'users'}
