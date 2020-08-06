@@ -68,9 +68,17 @@ def getOrg(id):
 
 @app.route("/createUser/")
 def createUser():
-    jeff = User(firstname='Adam', email='adamash99@gmail.com')
-    jeff.save(force_insert=True)
-    return "user created maybe"
+    jeff = User(firstname='Adam', email="adamash99@gmail.com")
+    saved = jeff.save(force_insert=True)
+    print(saved.firstname)
+    return ("user created maybe")
+
+@app.route("/listConnections/")
+def listConnections():
+    s = ""
+    for user in User.objects:
+        s += (user.firstname) + "\n"
+    return s
 
 if __name__ == "__main__":
     app.run()
