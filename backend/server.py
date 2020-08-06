@@ -1,41 +1,33 @@
 from flask import Flask
 from flask_cors import CORS
-from pymongo import MongoClient
+from mongoengine import *
 import backend.constants as const
 from backend.models.models import User
 
 app = Flask(__name__)
 CORS(app)
 
-client = MongoClient(const.MONGO_URI)
-db = client['mad-donations']
+connect('mad-donations', host=const.MONGO_URI)
 
 
 @app.route("/")
 def hello():
-    user = db.users.find_one()
-    return user['name']
+    return "Hello world"
 
 # Test endpoint to get React, Flask, and Mongo hooked up
 @app.route("/getUser/id/<string:id>/")
 def getUserById(id):
-    # user = User(db.users.find({'_id': id})[0])
-    # app.logger.info("etst")
-    # app.logger.info(user.get_email)
-
-    # return {
-    #     '_id': str(user['_id']),
-    #     'name': user['name']
-    # }
-    return {}
+    return {
+        '_id': "512123",
+        'name': "danielle"
+    }
 
 @app.route("/getUser/name/<string:name>/")
 def getUserByName(name):
-    user = db.users.find({'firstName': name})[0]
     return {
-        '_id': str(user['_id']),
-        'firstName': user['firstName'],
-        'lastName': user['lastName']
+        '_id': '1234',
+        'firstName': 'Adam',
+        'lastName': 'Ash'
     }
 
 @app.route("/home/")
@@ -57,25 +49,19 @@ def account():
 def getInfo(id):
     return "This is account %s" % id
 
-
-@app.route("/account/<string:name>/")
-def addMember(name):
-    post = {
-        'name': name,
-    }
-    user_id = db.users.insert_one(post).inserted_id
-    return "Here is user_id: %s" % user_id
-
-
 @app.route("/orgs/")
 def orgs():
     return "Here are all of our orgs"
-
 
 @app.route("/orgs/<int:id>")
 def getOrg(id):
     return "This is organization %s" % id
 
+@app.route("/createUser")
+def createUser():
+    jeff = User(firstname='Adam', email='adamash99@gmail.com')
+    jeff.save()
+    return "user created maybe"
 
 if __name__ == "__main__":
     #app.run()
