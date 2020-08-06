@@ -1,0 +1,46 @@
+.carousel-slide {
+  height: 400px;
+
+  .carousel-img {
+    width: 100%;
+    overflow: hidden;
+    margin: auto;
+    position: absolute;
+    top: -100%;
+    bottom: -100%;
+  }
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+  width: 100px;
+}
+
+.main {
+  margin: 20px 300px;
+}
+
+h1,
+.tagline,
+.get-started {
+  text-align: center;
+}
+
+.hiw-header {
+  margin-top: 60px;
+  margin-bottom: 20px;
+}
+
+.hiw-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-between;
+  width: 800px;
+  margin: auto;
+}
+
+.hiw-cards {
+  flex: 0 1 calc(50% - 20px);
+  margin-bottom: 40px;
+}
