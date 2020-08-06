@@ -46,7 +46,7 @@ export default () => {
       <div className="main">
         <h1 className="page-header">MAD Donations</h1>
         <p className="tagline">Your one stop shop for supporting the things you want to be supporting</p>
-        <h1 className="hiw-header">How It Works</h1>
+        <h1 className="hiw-header">How it works</h1>
         <div className="hiw-cards-container">
           <Card className="hiw-cards">
             <Card.Img variant="top" src={hag} />
@@ -85,6 +85,8 @@ export default () => {
             </Card.Body>
           </Card>
         </div>
+        <h1>Get started</h1>
+        <p className="get-started"><a href="/login">Create an account</a> and choose your monthly contribution.</p>
       </div>
     </>
   );
