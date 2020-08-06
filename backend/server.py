@@ -2,12 +2,12 @@ from flask import Flask
 from flask_cors import CORS
 from mongoengine import *
 import backend.constants as const
+from backend.models.models import User
 
 app = Flask(__name__)
 CORS(app)
 
 connect('mad-donations', host=const.MONGO_URI)
-
 
 @app.route("/")
 def hello():
@@ -56,7 +56,12 @@ def orgs():
 def getOrg(id):
     return "This is organization %s" % id
 
+@app.route("/createUser")
+def createUser():
+    jeff = User(firstname='Adam', email='adamash99@gmail.com')
+    jeff.save()
+    return "user created maybe"
 
 if __name__ == "__main__":
-    app.run()
+    #app.run()
     client.close()
