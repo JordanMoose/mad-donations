@@ -13,15 +13,12 @@ from mongoengine import (
     
 class Transaction(EmbeddedDocument):
     transactionID = ObjectIdField()
-    user = ReferenceField(User)
     time = DateTimeField()
     amount = StringField() #if switch type, just put "old amount -> new amount"
     transaction_type = StringField() # subscribe start, subscribe end, subscribe switch price/genre or one time thing
     genre = StringField() # if switch type, just put "old genre -> new genre"
-
 class Subscription(EmbeddedDocument):
     subscriptionID = ObjectIdField()
-    user = ReferenceField(User)
     genre = StringField()
     monthlyAmount = FloatField()
     status = StringField() #active, cancelled, or switched
