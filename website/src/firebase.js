@@ -3,6 +3,7 @@ import "firebase/analytics";
 import "firebase/auth";
 import * as firebaseui from 'firebaseui';
 
+// initialize firebase
 const firebaseConfig = {
   apiKey: "AIzaSyAgU54RGz9ZXvbMIVnDpgtH1MBYVm7zdcM",
   authDomain: "mad-donations.firebaseapp.com",
@@ -16,6 +17,8 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.analytics()
 
+// initliaze firebaseUI
+var ui = new firebaseui.auth.AuthUI(firebase.auth());
 const uiConfig = {
   callbacks: {
     signInSuccessWithAuthResult: function(authResult, redirectUrl) {
@@ -40,9 +43,55 @@ const uiConfig = {
   // Terms of service url.
   tosUrl: '/home',
   // Privacy policy url.
-  privacyPolicyUrl: '/home'
+  privacyPolicyUrl: '/home',
+  autoUpgradeAnonymousUsers: true
 };
-var ui = new firebaseui.auth.AuthUI(firebase.auth());
 ui.start('#firebaseui-auth-container', uiConfig);
+
+var initApp = function() {
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        // User is signed in.
+        var displayName = user.displayName;
+        var email = user.email;
+        var emailVerified = user.emailVerified;
+        var photoURL = user.photoURL;
+        var uid = user.uid;
+        var phoneNumber = user.phoneNumber;
+        var providerData = user.providerData;
+        user.getIdToken().then(function(accessToken) {
+        //   document.getElementById('sign-in-status').textContent = 'Signed in';
+        //   document.getElementById('sign-in').textContent = 'Sign out';
+        //   document.getElementById('account-details').textContent = JSON.stringify({
+        //     displayName: displayName,
+        //     email: email,
+        //     emailVerified: emailVerified,
+        //     phoneNumber: phoneNumber,
+        //     photoURL: photoURL,
+        //     uid: uid,
+        //     accessToken: accessToken,
+        //     providerData: providerData
+        //   }, null, '  ');
+        try {
+            document.getElementById('user-display-name').textContent = 'Hello ' + displayName; // Can add displayname to menubar component so its displayed across the site
+        } catch(err) {
+            console.log(err)
+        }
+        });
+      } else {
+        // User is signed out.
+        // document.getElementById('sign-in-status').textContent = 'Signed out';
+        // document.getElementById('sign-in').textContent = 'Sign in';
+        // document.getElementById('account-details').textContent = 'null';
+        document.getElementById('user-display-name').textContent = 'no user is signed in';
+      }
+    }, function(error) {
+      console.log(error);
+    });
+  };
+
+  window.addEventListener('load', function() {
+    initApp();
+  });
 
 export default firebase;
