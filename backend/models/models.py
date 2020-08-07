@@ -34,22 +34,22 @@ class User(Document):
 
 class Organization(Document):
     orgID = ObjectIdField()
-    genres = ListField(StringField())
+    categories = ListField(StringField())
     months_active = ListField(StringField()) # each item should be formatted like "8/20"
     total_raised = FloatField()
     meta = {'collection': 'orgs'}
 
 class activeMonth(EmbeddedDocument):
-    #this class is for one month of one genre
+    #this class is for one month of one category
     activeMonthID = ObjectIdField()
     month = StringField() # should be formatted like "8/20"
     orgs = ListField(ReferenceField(Organization))
     total_raised = FloatField()
     notes = StringField() #put other info here, like the cash split or whatever
 
-class Genre(Document):
-    genreID = ObjectIdField()
+class Category(Document):
+    categoryID = ObjectIdField()
     name = StringField()
     months = EmbeddedDocumentListField(activeMonth)
-    meta = {'collection': 'genres'}
+    meta = {'collection': 'categories'}
 
