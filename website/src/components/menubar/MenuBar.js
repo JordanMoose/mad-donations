@@ -10,6 +10,7 @@ import * as firebase from "firebase/app";
 import 'firebase/auth'
 
 export default (activeTab) => {
+
 	const handleClick = () => {
 		firebase.auth().signOut().then(() => {
 			return <Redirect to="/home" />

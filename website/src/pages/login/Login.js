@@ -12,9 +12,10 @@ export default () => {
             <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
         </head>
         <body>
-            <h1>Create an Account</h1>
-            <div id="firebaseui-auth-container"></div>
-            <div id="loader">Loading...</div>
+          <MenuBar activeTab="login"/>
+          <h1>Create an Account</h1>
+          <div id="firebaseui-auth-container"></div>
+          <div id="loader">Loading...</div>
         </body>
     </>
   );
