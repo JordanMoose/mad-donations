@@ -36,7 +36,7 @@ const uiConfig = {
   },
   // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
   signInFlow: 'popup',
-  signInSuccessUrl: '/home',
+  signInSuccessUrl: '/login/choose',
   signInOptions: [
     // Leave the lines as is for the providers you want to offer your users.
     firebase.auth.EmailAuthProvider.PROVIDER_ID
@@ -84,7 +84,7 @@ var initApp = function() {
       // document.getElementById('sign-in-status').textContent = 'Signed out';
       // document.getElementById('sign-in').textContent = 'Sign in';
       // document.getElementById('account-details').textContent = 'null';
-      document.getElementById('user-display-name').textContent = 'no user is signed in';
+      document.getElementById('user-display-name').textContent = '';
     }
   }, function(error) {
     console.log(error);
