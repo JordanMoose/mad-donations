@@ -15,9 +15,9 @@ class Transaction(EmbeddedDocument):
     transactionID = ObjectIdField()
     time = DateTimeField()
     amount = StringField() #if switch type, just put "old amount -> new amount"
-    transaction_type = StringField() # subscribe start, subscribe end, subscribe switch price/genre or one time thing
+    transaction_type = StringField() # subscribe start, subscribe end, subscribe switch price/genre
     genre = StringField() # if switch type, just put "old genre -> new genre"
-class Subscription(EmbeddedDocument):
+class Subscription(Document):
     subscriptionID = ObjectIdField()
     genre = StringField()
     monthlyAmount = FloatField()
@@ -28,8 +28,8 @@ class User(Document):
     lastname = StringField()
     email = EmailField()
     transactions = EmbeddedDocumentListField(Transaction)
-    activeSubscriptions = EmbeddedDocumentListField(Subscription)
-    expiredSubscriptions = EmbeddedDocumentListField(Subscription)
+    activeSubscriptions = ListField(ReferenceField(Subscription))
+    expiredSubscriptions = ListField(ReferenceField(Subscription))
     meta = {'collection': 'users'}
 
 class Organization(Document):
