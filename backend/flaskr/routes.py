@@ -1,5 +1,6 @@
 from flask import jsonify, request
 from mongoengine.connection import connect, disconnect
+from mongoengine import DoesNotExist
 from flaskr.server import app
 from flaskr.models import User
 import flaskr.constants as const
@@ -75,12 +76,33 @@ def getOrg(id):
 	return "This is organization %s" % id
 
 
+#––––––––––––––––––#
+# User CRUD routes #
+#––––––––––––––––––#
 @app.route("/user/create/", methods=["POST"])
 def createUser():
 	userData = request.json
 	newUser = User(firstname=userData['firstname'], lastname=userData['lastname'], email=userData['email'])
-	saved = newUser.save(force_insert=True)
-	return "User created: " + (saved.firstname or "no")
+	try:
+		saved = newUser.save(force_insert=True)
+	except:
+		return "Error saving user to database."
+
+	return "User created: %s %s" % (saved.firstname, saved.lastname)
+
+
+@app.route("/user/<string:id>/", methods=["DELETE"])
+def deleteUser(id):
+	try:
+		user = User.objects.get(id=id)
+		firstname, lastname = user.firstname, user.lastname
+		user.delete()
+	except DoesNotExist:
+		return "No user with that id."
+	except:
+		return "An unknown error occurred."
+
+	return "User deleted: %s %s" % (firstname, lastname)
 
 
 @app.route("/listConnections/")
