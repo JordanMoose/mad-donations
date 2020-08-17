@@ -1,7 +1,7 @@
 from mongoengine.connection import connect, disconnect
-from backend.server import app
-import backend.constants as const
-from backend.models.models import User
+from flaskr.server import app
+from flaskr.models import User
+import flaskr.constants as const
 
 
 @app.route("/")
@@ -19,6 +19,7 @@ def connectToMongo():
 def resetMongo():
 	disconnect()
 	return "Maybe disconnected from Mongo"
+
 
 # Test endpoint to get React, Flask, and Mongo hooked up
 @app.route("/getUser/id/<string:id>/")
@@ -66,18 +67,11 @@ def orgs():
 @app.route("/orgs/featured/")
 def featuredOrgs():
 	return "Here are our featured organizations of the month."
+	
 
 @app.route("/orgs/<int:id>")
 def getOrg(id):
 	return "This is organization %s" % id
-
-
-@app.route("/createUser/")
-def createUser():
-	jeff = User(firstname='Adam', email="adamash99@gmail.com")
-	saved = jeff.save(force_insert=True)
-	print(saved.firstname)
-	return ("user created maybe")
 
 
 @app.route("/listConnections/")
@@ -86,3 +80,6 @@ def listConnections():
 	for user in User.objects:
 		s += (user.firstname) + "\n"
 	return s
+
+
+
