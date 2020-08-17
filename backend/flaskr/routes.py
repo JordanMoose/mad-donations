@@ -1,3 +1,4 @@
+from flask import jsonify, request
 from mongoengine.connection import connect, disconnect
 from flaskr.server import app
 from flaskr.models import User
@@ -72,6 +73,13 @@ def featuredOrgs():
 @app.route("/orgs/<int:id>")
 def getOrg(id):
 	return "This is organization %s" % id
+
+
+@app.route("/user/create/", methods=["POST"])
+def createUser():
+	userData = request.get_json()
+	# TODO: Add user data to db
+	return jsonify(userData)
 
 
 @app.route("/listConnections/")

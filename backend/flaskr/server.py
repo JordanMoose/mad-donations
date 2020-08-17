@@ -7,7 +7,6 @@ app = Flask(__name__)
 CORS(app)
 connect(db='mad-donations', host=const.MONGO_URI)
 import flaskr.routes
-import tests.test_routes
 
 if __name__ == "__main__":
     app.run(threaded=True)
