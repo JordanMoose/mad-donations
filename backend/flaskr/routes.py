@@ -77,9 +77,10 @@ def getOrg(id):
 
 @app.route("/user/create/", methods=["POST"])
 def createUser():
-	userData = request.get_json()
-	# TODO: Add user data to db
-	return jsonify(userData)
+	userData = request.json
+	newUser = User(firstname=userData['firstname'], lastname=userData['lastname'], email=userData['email'])
+	saved = newUser.save(force_insert=True)
+	return "User created: " + (saved.firstname or "no")
 
 
 @app.route("/listConnections/")
