@@ -15,7 +15,7 @@ class Subscription(Document):
     subscriptionID = ObjectIdField()
     cause = StringField()
     monthlyAmount = FloatField()
-    status = StringField()  # active, cancelled, or switched
+    status = StringField()  # active, cancelled, or updated (if the user has since updated their monthly amount for this subscription)
     meta = {'collection': 'subscriptions'}
     
 class Transaction(Document):

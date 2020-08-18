@@ -174,15 +174,19 @@ def createSubscription():
 	return "Subscription created: %s" % (saved.id)
 
 
-@app.route("/subscription/<string:id>/", methods=["DELETE"])
+# Deleting a subscription means updating status to expired
+@app.route("/subscription/<string:id>/", methods=["PATCH"])
 def deleteSubscription(id):
 	try:
 		sub = Subscription.objects.get(id=id)
-		sub.delete()
 	except DoesNotExist:
 		return "No subscription with that id."
 	except:
 		return "An unknown error occurred."
+
+	expired = sub.modify(status="expired")
+	if not expired:
+		return "Error moving subscription from active to expired."
 
 	return "Subscription deleted: %s" % (id)
 
