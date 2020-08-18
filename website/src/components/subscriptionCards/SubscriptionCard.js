@@ -13,14 +13,21 @@ export default (props) => {
   } else {
     buttons = <div></div>
   }
+  
+  //lol thanks stackoverflow https://stackoverflow.com/questions/5915096/get-random-item-from-javascript-array
+  Array.prototype.random = function () {
+    return this[Math.floor((Math.random()*this.length))];
+  }
+  const endMessage = ['Nice Job!', "Hell ya!", "You are changing the world!", "Thanks for helping out!"].random()
+
 
   return (
       <Card className = "card">
           <Card.Body>
             <Card.Title>Environmental Rights</Card.Title>
             <Card.Subtitle>May 2020-Current</Card.Subtitle>
-            <Card.Text>You are donating <b styles={{color:"red"}}> $10 a month </b>, and have donated $50 total. Your money went to prominant
-              organizations such as GreenPeace and the {props.name}. Nice job!
+            <Card.Text>You {isActiveSub ? 'are' : 'were'} donating <b style={{color: 'green'}}> $10 a month </b>, and have donated $50 total. Your money {isActiveSub ? 'is going' : 'went'} to prominant
+              organizations such as GreenPeace and the {props.name}. {endMessage}
             </Card.Text>
             <div className="button-holder">
               {buttons}

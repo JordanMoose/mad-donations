@@ -7,7 +7,6 @@ import SubscriptionCard from 'components/subscriptionCards/SubscriptionCard.js';
 
 export default () => {
   const user = useContext(UserContext);
-
   return (
     <>
       <MenuBar activeTab="account" />
@@ -46,7 +45,7 @@ export default () => {
           <SubscriptionCard name='danielle' active={false}/>
           <SubscriptionCard name='danielle'active={false}/>
           <SubscriptionCard name='adam'active={false}/>
-          <SubscriptionCard name='mooseman'active={true}/>
+          <SubscriptionCard name='mooseman'active={false}/>
           </div>
         </div>
         
