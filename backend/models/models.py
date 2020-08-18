@@ -53,6 +53,6 @@ class ActiveMonth(EmbeddedDocument):
 class Category(Document):
     categoryID = ObjectIdField()
     name = StringField()
-    months = EmbeddedDocumentListField(activeMonth)
+    months = EmbeddedDocumentListField(ActiveMonth)
     meta = {'collection': 'categories'}
 
