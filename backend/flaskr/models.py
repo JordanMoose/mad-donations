@@ -21,9 +21,9 @@ class Subscription(Document):
 class Transaction(Document):
     transactionID = ObjectIdField()
     time = DateTimeField()
-    amount = StringField() # if switch type, just put "old amount -> new amount"
+    amount = FloatField()
     transactionType = StringField() # subscribe start, subscribe end, subscribe switch price/cause
-    cause = StringField()  # if switch type, just put "old cause -> new cause"
+    cause = StringField()
     meta = {'collection': 'transactions'}
 
 class User(Document):

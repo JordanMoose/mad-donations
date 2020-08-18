@@ -2,7 +2,7 @@ from flask import jsonify, request
 from mongoengine.connection import connect, disconnect
 from mongoengine import DoesNotExist
 from flaskr.server import app
-from flaskr.models import User, Subscription
+from flaskr.models import User, Subscription, Transaction
 import flaskr.constants as const
 
 
@@ -226,6 +226,12 @@ def editSubscriptionAmount(id):
 @app.route("/stats/users/total/", methods=["GET"])
 def getTotalUsers():
 	return str(User.objects.count())
+
+
+# Total amount raised
+@app.route("/stats/transactions/total/", methods=["GET"])
+def getTotalAmountRaised():
+	return "$%.2f" % (Transaction.objects.sum('amount'))
 
 
 @app.route("/listConnections/")
