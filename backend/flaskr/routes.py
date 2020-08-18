@@ -91,6 +91,24 @@ def createUser():
 	return "User created: %s %s" % (saved.firstname, saved.lastname)
 
 
+@app.route("/user/<string:id>/", methods=["PATCH"])
+def editUserInfo(id):
+	try:
+		user = User.objects.get(id=id)
+	except DoesNotExist:
+		return "No user with that id."
+	except:
+		return "An unknown error occurred."
+
+	updateData = request.json
+	for k, v in updateData.items():
+		updated = user.modify(**{k: v})
+		if not updated:
+			return "Error updating user field %s." % (k)
+	
+	return "Info updated for user: %s %s" % (user.firstname, user.lastname)
+
+
 @app.route("/user/<string:id>/", methods=["DELETE"])
 def deleteUser(id):
 	try:
