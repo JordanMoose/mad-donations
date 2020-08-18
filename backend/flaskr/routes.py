@@ -196,19 +196,28 @@ def deleteSubscription(id):
 @app.route("/subscription/<string:id>/edit/", methods=["PATCH"])
 def editSubscriptionAmount(id):
 	try:
-		sub = Subscription.objects.get(id=id)
+		oldSub = Subscription.objects.get(id=id)
 	except DoesNotExist:
 		return "No subscription with that id."
 	except:
 		return "An unknown error occurred."
 
-	prevAmount = sub.monthlyAmount
-	updateData = request.json
-	updated = sub.modify(monthlyAmount=updateData['monthlyAmount'])
-	if not updated:
-		return "Error updating subscription monthly amount."
+	if oldSub.status == 'expired':
+		return "This subscription is expired."
+	if oldSub.status == 'updated':
+		return "You tried to access a subscription whose monthly amount has alredy been updated. Make sure to use the most recent (active) subscription."
 
-	return "Monthly amount for subscription %s updated from $%.2f to $%.2f." % (id, prevAmount, sub.monthlyAmount)
+	updateData = request.json
+	newMonthlyAmount = updateData['monthlyAmount']
+	if newMonthlyAmount == oldSub.monthlyAmount:
+		return "No change in subscription monthly amount. Skipping update."
+
+	updated = oldSub.modify(status='updated')
+	if not updated:
+		return "Error changing old subscription status to updated."
+
+	newSub = Subscription(cause=oldSub.cause, monthlyAmount=newMonthlyAmount, status='active').save()
+	return "Monthly amount for subscription %s updated from $%.2f to $%.2f." % (newSub.id, oldSub.monthlyAmount, newSub.monthlyAmount)
 
 
 @app.route("/listConnections/")
