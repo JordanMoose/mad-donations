@@ -184,6 +184,8 @@ def deleteSubscription(id):
 	except:
 		return "An unknown error occurred."
 
+	if sub.status == "expired":
+		return "This subscription is already expired."
 	expired = sub.modify(status="expired")
 	if not expired:
 		return "Error moving subscription from active to expired."
