@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./Account.css";
-import MenuBar from 'components/menubar/MenuBar.js'
+import MenuBar from 'components/menubar/MenuBar.js';
 import { UserContext } from 'providers/UserProvider';
 import {Card, Button, Dropdown} from 'react-bootstrap';
+import SubscriptionCard from 'components/subscriptionCards/SubscriptionCard.js';
 
 export default () => {
   const user = useContext(UserContext);
-
   return (
     <>
       <MenuBar activeTab="account" />
@@ -35,73 +35,17 @@ export default () => {
         <div className = "subcategory">
           <h2>Active Subscriptions</h2>
           <div className="card-holder">
-            <Card className = "card" style={{width: '18rem'}}>
-              <Card.Body>
-                <Card.Title>Environmental Rights</Card.Title>
-                <Card.Subtitle>May 2020-Current</Card.Subtitle>
-                <Card.Text>You are donating <text style={{color: 'green'}}> $10 a month</text>, and have donated $50 total. Your money went to prominant
-                  organizations such as GreenPeace and the WWE. Nice job!
-                </Card.Text>
-                <div className="button-holder">
-                  <Button variant = "secondary"> Change Amount</Button>
-                  <Button variant="secondary">Cancel Subscription</Button>
-                </div>
-              </Card.Body>
-            </Card>
-            <Card className="card" style={{width: '18rem'}}>
-              <Card.Body>
-                <Card.Title>LGBTQ+ Rights</Card.Title>
-                <Card.Subtitle>May 2020-Current</Card.Subtitle>
-                <text>You are donating <text style={{color: 'green'}}> $10 a month</text>, and $50 total. Your money went to prominant
-                  organizations such as the trevor project and the WWE. Fuck ya!
-                </text>
-                <div className="button-holder">
-                  <Button variant = "secondary"> Change Amount</Button>
-                  <Button variant="secondary">Cancel Subscription</Button>
-                </div>
-              </Card.Body>
-            </Card>
+            <SubscriptionCard name='danielle' active={true}/>
+            <SubscriptionCard name='WWE' active={true}/>
           </div>
         </div>
         <div className= "subcategory">
           <h2>Previous Subscriptions</h2>
           <div className="card-holder">
-            <Card className = "card" style={{width: '18rem'}}>
-              <Card.Body>
-                <Card.Title>Environmental Rights</Card.Title>
-                <Card.Subtitle>May 2020-Current</Card.Subtitle>
-                <Card.Text>You donated $10 a month, and $50 total. Your money went to prominant
-                  organizations such as GreenPeace and the WWE. Nice job!
-                </Card.Text>
-              </Card.Body>
-            </Card>
-            <Card className="card" style={{width: '18rem'}}>
-              <Card.Body>
-                <Card.Title>LGBTQ+ Rights</Card.Title>
-                <Card.Subtitle>May 2020-Current</Card.Subtitle>
-                <Card.Text>You donated $10 a month, and $50 total. Your money went to prominant
-                  organizations such as the trevor project and the WWE. Fuck ya!
-                </Card.Text>
-              </Card.Body>
-            </Card>
-            <Card className="card" style={{width: '18rem'}}>
-              <Card.Body>
-                <Card.Title>LGBTQ+ Rights</Card.Title>
-                <Card.Subtitle>May 2020-Current</Card.Subtitle>
-                <Card.Text>You donated $10 a month, and $50 total. Your money went to prominant
-                  organizations such as the trevor project and the WWE. Fuck ya!
-                </Card.Text>
-              </Card.Body>
-            </Card>
-            <Card className="card" style={{width: '18rem'}}>
-              <Card.Body>
-                <Card.Title>LGBTQ+ Rights</Card.Title>
-                <Card.Subtitle>May 2020-Current</Card.Subtitle>
-                <Card.Text>You donated $10 a month, and $50 total. Your money went to prominant
-                  organizations such as the trevor project and the WWE. Fuck ya!
-                </Card.Text>
-              </Card.Body>
-            </Card>
+          <SubscriptionCard name='danielle' active={false}/>
+          <SubscriptionCard name='danielle'active={false}/>
+          <SubscriptionCard name='adam'active={false}/>
+          <SubscriptionCard name='mooseman'active={false}/>
           </div>
         </div>
         
