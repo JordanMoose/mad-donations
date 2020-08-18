@@ -159,9 +159,9 @@ def getUserExpiredSupscriptions(id):
 	return str(user.expiredSubscriptions)
 
 
-#––––––––––––––––––––––––––#
-# Subscription CRUD Routes #
-#––––––––––––––––––––––––––#
+#–––––––––––––––––––––#
+# Subscription Routes #
+#–––––––––––––––––––––#
 @app.route("/subscription/create/", methods=["POST"])
 def createSubscription():
 	subData = request.json
@@ -175,7 +175,7 @@ def createSubscription():
 
 
 # Deleting a subscription means updating status to expired
-@app.route("/subscription/<string:id>/", methods=["PATCH"])
+@app.route("/subscription/<string:id>/delete/", methods=["PATCH"])
 def deleteSubscription(id):
 	try:
 		sub = Subscription.objects.get(id=id)
@@ -189,6 +189,24 @@ def deleteSubscription(id):
 		return "Error moving subscription from active to expired."
 
 	return "Subscription deleted: %s" % (id)
+
+
+@app.route("/subscription/<string:id>/edit/", methods=["PATCH"])
+def editSubscriptionAmount(id):
+	try:
+		sub = Subscription.objects.get(id=id)
+	except DoesNotExist:
+		return "No subscription with that id."
+	except:
+		return "An unknown error occurred."
+
+	prevAmount = sub.monthlyAmount
+	updateData = request.json
+	updated = sub.modify(monthlyAmount=updateData['monthlyAmount'])
+	if not updated:
+		return "Error updating subscription monthly amount."
+
+	return "Monthly amount for subscription %s updated from $%.2f to $%.2f." % (id, prevAmount, sub.monthlyAmount)
 
 
 @app.route("/listConnections/")
