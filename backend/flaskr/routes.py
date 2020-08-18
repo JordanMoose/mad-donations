@@ -77,7 +77,7 @@ def getOrg(id):
 
 
 #–––––––––––––#
-# User routes #
+# User Routes #
 #–––––––––––––#
 @app.route("/user/create/", methods=["POST"])
 def createUser():
@@ -218,6 +218,14 @@ def editSubscriptionAmount(id):
 
 	newSub = Subscription(cause=oldSub.cause, monthlyAmount=newMonthlyAmount, status='active').save()
 	return "Monthly amount for subscription %s updated from $%.2f to $%.2f." % (newSub.id, oldSub.monthlyAmount, newSub.monthlyAmount)
+
+
+#––––––––––––––––––––––#
+# Product Stats Routes #
+#––––––––––––––––––––––#
+@app.route("/stats/users/total/", methods=["GET"])
+def getTotalUsers():
+	return str(User.objects.count())
 
 
 @app.route("/listConnections/")
