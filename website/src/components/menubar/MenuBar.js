@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import {
 	Navbar,
 	Nav,
-	Button
+	Button,
+	NavDropdown
 } from 'react-bootstrap';
 import './MenuBar.scss';
 import { Redirect } from 'react-router-dom';
@@ -29,10 +30,12 @@ export default (activeTab) => {
 					<Nav.Link href="/about">About</Nav.Link>
 					<Nav.Link href="/orgs">Organizations</Nav.Link>
 					<Nav.Link href="/contact">Contact Us</Nav.Link>
-					<Nav.Link href="/account">Account</Nav.Link>
+					<NavDropdown title={user.displayName}>
+						<NavDropdown.Item href="/account">Account</NavDropdown.Item>
+						<NavDropdown.Divider />
+						<NavDropdown.Item onClick={handleClick} href="/home">Sign Out</NavDropdown.Item>
+					</NavDropdown>
 				</Nav>
-				<p id='user-display-name' style={{color: 'white'}} href="/account">{"Signed in as " + user.displayName}</p>
-				<Button onClick={handleClick} href="/home">Sign Out</Button>
 			</Navbar>
 		)
 	} else {
