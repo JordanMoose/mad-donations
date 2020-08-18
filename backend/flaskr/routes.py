@@ -135,6 +135,30 @@ def getUserCauses(id):
 	return user.supportedCauses
 
 
+@app.route("/user/<string:id>/activeSubscriptions/", methods=["GET"])
+def getUserActiveSupscriptions(id):
+	try:
+		user = User.objects.get(id=id)
+	except DoesNotExist:
+		return "No user with that id."
+	except:
+		return "An unknown error occurred."
+	
+	return user.activeSubscriptions
+
+
+@app.route("/user/<string:id>/expiredSubscriptions/", methods=["GET"])
+def getUserExpiredSupscriptions(id):
+	try:
+		user = User.objects.get(id=id)
+	except DoesNotExist:
+		return "No user with that id."
+	except:
+		return "An unknown error occurred."
+	
+	return user.expiredSubscriptions
+
+
 @app.route("/listConnections/")
 def listConnections():
 	s = ""
