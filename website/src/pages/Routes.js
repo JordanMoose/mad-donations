@@ -4,6 +4,7 @@ import About from "./about/About";
 import Account from "./account/Account"
 import Contact from "./contact/Contact"
 import Login from "./login/Login"
+import LoginRedirect from "./login/LoginRedirect"
 import Choose from "./login/Choose"
 import Orgs from "./orgs/Orgs"
 import Subscribe from "./subscribe/Subscribe";
@@ -30,6 +31,9 @@ export default () => {
             </Route>
             <Route path="/contact">
               <Contact />
+            </Route>
+            <Route path="/login/after">
+              <LoginRedirect />
             </Route>
             <Route path="/login/choose">
               <Choose />

@@ -20,6 +20,7 @@ firebase.analytics();
 // initliaze firebaseUI
 export const auth = firebase.auth();
 var ui = new firebaseui.auth.AuthUI(auth);
+var signInRedirect, created, lastSignIn;
 const uiConfig = {
   callbacks: {
     signInSuccessWithAuthResult: function(authResult, redirectUrl) {
@@ -36,7 +37,7 @@ const uiConfig = {
   },
   // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
   signInFlow: 'popup',
-  signInSuccessUrl: '/login/choose',
+  signInSuccessUrl: '/login/after',
   signInOptions: [
     // Leave the lines as is for the providers you want to offer your users.
     firebase.auth.EmailAuthProvider.PROVIDER_ID
