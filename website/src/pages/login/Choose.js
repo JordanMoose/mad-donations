@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import "./Account.css";
+import "./Choose.css";
 import MenuBar from 'components/menubar/MenuBar.js'
 import { UserContext } from 'providers/UserProvider';
 
@@ -8,13 +8,13 @@ export default () => {
 
   return (
     <>
-      <MenuBar activeTab="account" />
+      <MenuBar/>
       <div>
-        <div>This is the account page.</div>
+        <div>This is where users will choose their supported causes.</div>
         {user ? 
         <>
-          <div>Your name is {user.displayName}</div>
-          <div>Your email is {user.email}</div> 
+          <div>Hello {user.displayName}!</div>
+          <div>Choose your supported causes here.</div> 
         </>
         : 
         <div>Loading...</div>
