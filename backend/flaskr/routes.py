@@ -123,12 +123,21 @@ def deleteUser(id):
 	return "User deleted: %s %s" % (firstname, lastname)
 
 
+@app.route("/user/<string:id>/causes/", methods=["GET"])
+def getUserCauses(id):
+	try:
+		user = User.objects.get(id=id)
+	except DoesNotExist:
+		return "No user with that id."
+	except:
+		return "An unknown error occurred."
+	
+	return user.supportedCauses
+
+
 @app.route("/listConnections/")
 def listConnections():
 	s = ""
 	for user in User.objects:
 		s += (user.firstname) + "\n"
 	return s
-
-
-
