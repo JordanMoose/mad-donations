@@ -10,20 +10,7 @@ from mongoengine import (
     DateTimeField,
     ListField
 )
-    
-class Transaction(EmbeddedDocument):
-    transactionID = ObjectIdField()
-    time = DateTimeField()
-    amount = StringField() # if switch type, just put "old amount -> new amount"
-    transactionType = StringField() # subscribe start, subscribe end, subscribe switch price/cause
-    cause = StringField()  # if switch type, just put "old cause -> new cause"
-    
-class Subscription(Document):
-    subscriptionID = ObjectIdField()
-    cause = StringField()
-    monthlyAmount = FloatField()
-    status = StringField()  # active, cancelled, or switched
-    
+
 class User(Document):
     userID = ObjectIdField()
     firstname = StringField()
@@ -35,12 +22,33 @@ class User(Document):
     expiredSubscriptions = ListField(ReferenceField(Subscription))
     meta = {'collection': 'users'}
 
+class Subscription(Document):
+    subscriptionID = ObjectIdField()
+    cause = StringField()
+    monthlyAmount = FloatField()
+    status = StringField()  # active, cancelled, or switched
+    meta = {'collection': 'subscriptions'}
+    
+class Transaction(Document):
+    transactionID = ObjectIdField()
+    time = DateTimeField()
+    amount = StringField() # if switch type, just put "old amount -> new amount"
+    transactionType = StringField() # subscribe start, subscribe end, subscribe switch price/cause
+    cause = StringField()  # if switch type, just put "old cause -> new cause"
+    meta = {'collection': 'transactions'}
+
 class Organization(Document):
     orgID = ObjectIdField()
     categories = ListField(StringField())
     monthsActive = ListField(StringField()) # each item should be formatted like "8/20"
     totalRaised = FloatField()
     meta = {'collection': 'orgs'}
+
+class Category(Document):
+    categoryID = ObjectIdField()
+    name = StringField()
+    months = EmbeddedDocumentListField(ActiveMonth)
+    meta = {'collection': 'categories'}
 
 class ActiveMonth(EmbeddedDocument):
     # this class is for one month of one category
@@ -49,10 +57,3 @@ class ActiveMonth(EmbeddedDocument):
     orgs = ListField(ReferenceField(Organization))
     totalRaised = FloatField()
     notes = StringField() # put other info here, like the cash split or whatever
-
-class Category(Document):
-    categoryID = ObjectIdField()
-    name = StringField()
-    months = EmbeddedDocumentListField(ActiveMonth)
-    meta = {'collection': 'categories'}
-
