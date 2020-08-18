@@ -76,9 +76,9 @@ def getOrg(id):
 	return "This is organization %s" % id
 
 
-#––––––––––––––––––#
-# User CRUD routes #
-#––––––––––––––––––#
+#–––––––––––––#
+# User routes #
+#–––––––––––––#
 @app.route("/user/create/", methods=["POST"])
 def createUser():
 	userData = request.json
@@ -91,12 +91,12 @@ def createUser():
 	return "User created: %s %s" % (saved.firstname, saved.lastname)
 
 
-@app.route("/user/<string:id>/", methods=["PATCH"])
-def editUserInfo(id):
+@app.route("/user/<string:email>/", methods=["PATCH"])
+def editUserInfo(email):
 	try:
-		user = User.objects.get(id=id)
+		user = User.objects.get(email=email)
 	except DoesNotExist:
-		return "No user with that id."
+		return "No user with that email."
 	except:
 		return "An unknown error occurred."
 
@@ -109,50 +109,50 @@ def editUserInfo(id):
 	return "Info updated for user: %s %s" % (user.firstname, user.lastname)
 
 
-@app.route("/user/<string:id>/", methods=["DELETE"])
-def deleteUser(id):
+@app.route("/user/<string:email>/", methods=["DELETE"])
+def deleteUser(email):
 	try:
-		user = User.objects.get(id=id)
+		user = User.objects.get(email=email)
 		firstname, lastname = user.firstname, user.lastname
 		user.delete()
 	except DoesNotExist:
-		return "No user with that id."
+		return "No user with that email."
 	except:
 		return "An unknown error occurred."
 
 	return "User deleted: %s %s" % (firstname, lastname)
 
 
-@app.route("/user/<string:id>/causes/", methods=["GET"])
-def getUserCauses(id):
+@app.route("/user/<string:email>/causes/", methods=["GET"])
+def getUserCauses(email):
 	try:
-		user = User.objects.get(id=id)
+		user = User.objects.get(email=email)
 	except DoesNotExist:
-		return "No user with that id."
+		return "No user with that email."
 	except:
 		return "An unknown error occurred."
 	
 	return str(user.supportedCauses)
 
 
-@app.route("/user/<string:id>/activeSubscriptions/", methods=["GET"])
-def getUserActiveSupscriptions(id):
+@app.route("/user/<string:email>/activeSubscriptions/", methods=["GET"])
+def getUserActiveSupscriptions(email):
 	try:
-		user = User.objects.get(id=id)
+		user = User.objects.get(email=email)
 	except DoesNotExist:
-		return "No user with that id."
+		return "No user with that email."
 	except:
 		return "An unknown error occurred."
 	
 	return str(user.activeSubscriptions)
 
 
-@app.route("/user/<string:id>/expiredSubscriptions/", methods=["GET"])
-def getUserExpiredSupscriptions(id):
+@app.route("/user/<string:email>/expiredSubscriptions/", methods=["GET"])
+def getUserExpiredSupscriptions(email):
 	try:
-		user = User.objects.get(id=id)
+		user = User.objects.get(email=email)
 	except DoesNotExist:
-		return "No user with that id."
+		return "No user with that email."
 	except:
 		return "An unknown error occurred."
 	
