@@ -174,6 +174,19 @@ def createSubscription():
 	return "Subscription created: %s" % (saved.id)
 
 
+@app.route("/subscription/<string:id>/", methods=["DELETE"])
+def deleteSubscription(id):
+	try:
+		sub = Subscription.objects.get(id=id)
+		sub.delete()
+	except DoesNotExist:
+		return "No subscription with that id."
+	except:
+		return "An unknown error occurred."
+
+	return "Subscription deleted: %s" % (id)
+
+
 @app.route("/listConnections/")
 def listConnections():
 	s = ""
