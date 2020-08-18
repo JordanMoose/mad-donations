@@ -11,17 +11,6 @@ from mongoengine import (
     ListField
 )
 
-class User(Document):
-    userID = ObjectIdField()
-    firstname = StringField()
-    lastname = StringField()
-    email = EmailField()
-    supportedCauses = ListField(StringField())
-    transactions = EmbeddedDocumentListField(Transaction)
-    activeSubscriptions = ListField(ReferenceField(Subscription))
-    expiredSubscriptions = ListField(ReferenceField(Subscription))
-    meta = {'collection': 'users'}
-
 class Subscription(Document):
     subscriptionID = ObjectIdField()
     cause = StringField()
@@ -37,6 +26,17 @@ class Transaction(Document):
     cause = StringField()  # if switch type, just put "old cause -> new cause"
     meta = {'collection': 'transactions'}
 
+class User(Document):
+    userID = ObjectIdField()
+    firstname = StringField()
+    lastname = StringField()
+    email = EmailField()
+    supportedCauses = ListField(StringField())
+    transactions = ListField(ReferenceField(Transaction))
+    activeSubscriptions = ListField(ReferenceField(Subscription))
+    expiredSubscriptions = ListField(ReferenceField(Subscription))
+    meta = {'collection': 'users'}
+
 class Organization(Document):
     orgID = ObjectIdField()
     categories = ListField(StringField())
@@ -44,16 +44,16 @@ class Organization(Document):
     totalRaised = FloatField()
     meta = {'collection': 'orgs'}
 
-class Category(Document):
-    categoryID = ObjectIdField()
-    name = StringField()
-    months = EmbeddedDocumentListField(ActiveMonth)
-    meta = {'collection': 'categories'}
-
 class ActiveMonth(EmbeddedDocument):
     # this class is for one month of one category
     activeMonthID = ObjectIdField()
     month = StringField() # should be formatted like "8/20"
     orgs = ListField(ReferenceField(Organization))
     totalRaised = FloatField()
-    notes = StringField() # put other info here, like the cash split or whatever
+    notes = StringField()  # put other info here, like the cash split or whatever
+    
+class Category(Document):
+    categoryID = ObjectIdField()
+    name = StringField()
+    months = EmbeddedDocumentListField(ActiveMonth)
+    meta = {'collection': 'categories'}
