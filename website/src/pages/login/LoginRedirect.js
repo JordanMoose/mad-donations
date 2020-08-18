@@ -6,11 +6,12 @@ import Choose from './Choose'
 
 export default () => {
     const user = useContext(UserContext);
+    
     if (user == null) {
        return <div>Loading...</div>
     } else {
         if (user.metadata.creationTime == user.metadata.lastSignInTime) {
-            return <Choose />
+            return <Redirect to="/login/choose" />
         } else {
             return <Redirect to="/home" />
         }
