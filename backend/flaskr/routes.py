@@ -132,7 +132,7 @@ def getUserCauses(id):
 	except:
 		return "An unknown error occurred."
 	
-	return user.supportedCauses
+	return str(user.supportedCauses)
 
 
 @app.route("/user/<string:id>/activeSubscriptions/", methods=["GET"])
@@ -144,7 +144,7 @@ def getUserActiveSupscriptions(id):
 	except:
 		return "An unknown error occurred."
 	
-	return user.activeSubscriptions
+	return str(user.activeSubscriptions)
 
 
 @app.route("/user/<string:id>/expiredSubscriptions/", methods=["GET"])
@@ -156,7 +156,7 @@ def getUserExpiredSupscriptions(id):
 	except:
 		return "An unknown error occurred."
 	
-	return user.expiredSubscriptions
+	return str(user.expiredSubscriptions)
 
 
 @app.route("/listConnections/")
