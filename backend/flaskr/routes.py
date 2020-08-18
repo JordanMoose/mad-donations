@@ -2,7 +2,7 @@ from flask import jsonify, request
 from mongoengine.connection import connect, disconnect
 from mongoengine import DoesNotExist
 from flaskr.server import app
-from flaskr.models import User
+from flaskr.models import User, Subscription
 import flaskr.constants as const
 
 
@@ -157,6 +157,21 @@ def getUserExpiredSupscriptions(id):
 		return "An unknown error occurred."
 	
 	return str(user.expiredSubscriptions)
+
+
+#––––––––––––––––––––––––––#
+# Subscription CRUD Routes #
+#––––––––––––––––––––––––––#
+@app.route("/subscription/create/", methods=["POST"])
+def createSubscription():
+	subData = request.json
+	newSub = Subscription(cause=subData['cause'], monthlyAmount=subData['monthlyAmount'], status=subData['status'])
+	try:
+		saved = newSub.save(force_insert=True)
+	except:
+		return "Error saving subscription to database."
+	
+	return "Subscription created: %s" % (saved.id)
 
 
 @app.route("/listConnections/")
