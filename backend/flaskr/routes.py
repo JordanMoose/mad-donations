@@ -90,6 +90,15 @@ def createUser():
 
 	return "User created: %s %s" % (saved.firstname, saved.lastname)
 
+@app.route("/user/<string:email>/", methods=["GET"])
+def getUser(email):
+	try:
+		user = User.objects.get(email=email)
+	except DoesNotExist:
+		return "No user with that email."
+	except:
+		return "An unknown error occurred."
+	return str(user)
 
 @app.route("/user/<string:email>/", methods=["PATCH"])
 def editUserInfo(email):

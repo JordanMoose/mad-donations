@@ -4,7 +4,6 @@ import MenuBar from 'components/menubar/MenuBar.js';
 import { Modal } from "react-bootstrap";
 
 export default () => {
-  console.log("Hello");
 
   return (
     <>

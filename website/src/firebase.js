@@ -20,10 +20,11 @@ firebase.analytics();
 // initliaze firebaseUI
 export const auth = firebase.auth();
 var ui = new firebaseui.auth.AuthUI(auth);
-var signInRedirect, created, lastSignIn;
+var isNewUser;
 const uiConfig = {
   callbacks: {
     signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+      isNewUser = authResult.additionalUserInfo.isNewUser;
       // User successfully signed in.
       // Return type determines whether we continue the redirect automatically
       // or whether we leave that to developer to handle.
@@ -51,7 +52,7 @@ const uiConfig = {
 ui.start('#firebaseui-auth-container', uiConfig);
 
 var initApp = function() {
-  firebase.auth().onAuthStateChanged(function(user) {
+  auth.onAuthStateChanged(function(user) {
     if (user) {
       // User is signed in.
       var displayName = user.displayName;
@@ -61,31 +62,36 @@ var initApp = function() {
       var uid = user.uid;
       var phoneNumber = user.phoneNumber;
       var providerData = user.providerData;
+      var metadata = user.metadata;
       user.getIdToken().then(function(accessToken) {
-      //   document.getElementById('sign-in-status').textContent = 'Signed in';
-      //   document.getElementById('sign-in').textContent = 'Sign out';
-      //   document.getElementById('account-details').textContent = JSON.stringify({
-      //     displayName: displayName,
-      //     email: email,
-      //     emailVerified: emailVerified,
-      //     phoneNumber: phoneNumber,
-      //     photoURL: photoURL,
-      //     uid: uid,
-      //     accessToken: accessToken,
-      //     providerData: providerData
-      //   }, null, '  ');
-        // try {
-        //     document.getElementById('user-display-name').textContent = 'Hello ' + displayName; // Can add displayname to menubar component so its displayed across the site
-        // } catch(err) {
-        //     console.log(err)
-        // }
+        if (metadata.creationTime === metadata.lastSignInTime && isNewUser) {
+          console.log("WE MADE IT")
+          var firstName, lastName
+          try {
+            [firstName, lastName] = displayName.split(' ');
+          } catch {
+            firstName = displayName;
+            lastName = "";
+          }
+          const userData = JSON.stringify({
+            firstname: firstName,
+            lastname: lastName,
+            email: email,
+          });
+          const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: userData
+          };
+          fetch("/user/create/", requestOptions)
+        }
       });
     } else {
       // User is signed out.
       // document.getElementById('sign-in-status').textContent = 'Signed out';
       // document.getElementById('sign-in').textContent = 'Sign in';
       // document.getElementById('account-details').textContent = 'null';
-      document.getElementById('user-display-name').textContent = '';
+      // document.getElementById('user-display-name').textContent = '';
     }
   }, function(error) {
     console.log(error);
