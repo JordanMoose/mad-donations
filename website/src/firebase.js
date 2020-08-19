@@ -65,17 +65,8 @@ var initApp = function() {
       var metadata = user.metadata;
       user.getIdToken().then(function(accessToken) {
         if (metadata.creationTime === metadata.lastSignInTime && isNewUser) {
-          console.log("WE MADE IT")
-          var firstName, lastName
-          try {
-            [firstName, lastName] = displayName.split(' ');
-          } catch {
-            firstName = displayName;
-            lastName = "";
-          }
           const userData = JSON.stringify({
-            firstname: firstName,
-            lastname: lastName,
+            displayName: displayName,
             email: email,
           });
           const requestOptions = {
