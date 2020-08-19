@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import './CauseSelect.css';
+import { UserContext } from 'providers/UserProvider';
 
 export default () => {
     const [submitted, setSubmitted] = useState(false)
     const [userCauses, setUserCauses] = useState([])
     const causes = ["LGBTQ+ Rights", "Black Lives Matter", "Environmental Rights", "Healthcare"]
     
+    const user = useContext(UserContext)
+
     const handleChange = (event) => {
         const target = event.target
         if (target.checked) {
@@ -24,7 +27,17 @@ export default () => {
         
         // on success
         setSubmitted(true)
-        console.log(userCauses)
+
+        const requestOptions = {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ supportedCauses: userCauses })
+        };
+        fetch("/user/" + user.email + "/", requestOptions)
+            .then(res => {
+                console.log(res)
+            })
+        
         event.preventDefault()
     }
 
