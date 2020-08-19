@@ -1,0 +1,26 @@
+.main {
+	margin: 20px 300px;
+
+	.mission {
+		text-justify: auto;
+		margin-bottom: 20px;
+	}
+
+	.creator {
+
+		.creator-pic {
+			width: 250px;
+			margin-bottom: 10px;
+		}
+
+		.creator-info {
+			display: inline;
+			vertical-align: top;
+			margin-left: 10px;
+		}
+
+		.creator-name {
+			font-size: 20px;
+		}
+	}
+}
