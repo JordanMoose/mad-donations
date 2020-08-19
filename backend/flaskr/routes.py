@@ -101,10 +101,13 @@ def editUserInfo(email):
 		return "An unknown error occurred."
 
 	updateData = request.json
+	print(updateData)
 	for k, v in updateData.items():
-		updated = user.modify(**{k: v})
-		if not updated:
-			return "Error updating user field %s." % (k)
+		user[k] = v
+	try:
+		saved = user.save()
+	except:
+		"Error updating user."
 	
 	return "Info updated for user: %s %s" % (user.firstname, user.lastname)
 
@@ -133,7 +136,6 @@ def getUserCauses(email):
 		return "An unknown error occurred."
 	
 	return str(user.supportedCauses)
-
 
 @app.route("/user/<string:email>/activeSubscriptions/", methods=["GET"])
 def getUserActiveSupscriptions(email):

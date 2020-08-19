@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./Choose.css";
 import MenuBar from 'components/menubar/MenuBar.js'
+import CauseSelect from 'components/login/CauseSelect.js'
 import { UserContext } from 'providers/UserProvider';
 
 export default () => {
@@ -10,14 +11,14 @@ export default () => {
     <>
       <MenuBar/>
       <div>
-        <div>This is where users will choose their supported causes.</div>
-        {user ? 
-        <>
-          <div>Hello {user.displayName}!</div>
-          <div>Choose your supported causes here.</div> 
-        </>
-        : 
-        <div>Loading...</div>
+        {user == null ? 
+          <div>Loading...</div>
+				:
+				<>
+          <div>Hello {user.displayName}! Welcome to MAD Donations.</div>
+					<div>Choose your supported causes below.</div>
+					<CauseSelect />
+				</>
         }
       </div>
     </>

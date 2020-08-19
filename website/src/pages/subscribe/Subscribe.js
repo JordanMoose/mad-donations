@@ -9,7 +9,7 @@ export default () => {
     <>
       <MenuBar />
       <div>
-        <div>This is the subcsribe page. Here, users will subscribe!</div>
+        <div>This is the subscribe page. Here, users will subscribe!</div>
       </div>
     </>
   );
