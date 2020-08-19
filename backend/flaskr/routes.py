@@ -82,13 +82,13 @@ def getOrg(id):
 @app.route("/user/create/", methods=["POST"])
 def createUser():
 	userData = request.json
-	newUser = User(firstname=userData['firstname'], lastname=userData['lastname'], email=userData['email'])
+	newUser = User(displayName=userData['displayName'], email=userData['email'])
 	try:
 		saved = newUser.save(force_insert=True)
 	except:
 		return "Error saving user to database."
 
-	return "User created: %s %s" % (saved.firstname, saved.lastname)
+	return "User created: %s" % (saved.displayName)
 
 @app.route("/user/<string:email>/", methods=["GET"])
 def getUser(email):
@@ -118,21 +118,21 @@ def editUserInfo(email):
 	except:
 		"Error updating user."
 	
-	return "Info updated for user: %s %s" % (user.firstname, user.lastname)
+	return "Info updated for user: %s" % (user.displayName)
 
 
 @app.route("/user/<string:email>/", methods=["DELETE"])
 def deleteUser(email):
 	try:
 		user = User.objects.get(email=email)
-		firstname, lastname = user.firstname, user.lastname
+		displayName = user.displayName
 		user.delete()
 	except DoesNotExist:
 		return "No user with that email."
 	except:
 		return "An unknown error occurred."
 
-	return "User deleted: %s %s" % (firstname, lastname)
+	return "User deleted: %s" % (displayName)
 
 
 @app.route("/user/<string:email>/causes/", methods=["GET"])
@@ -249,5 +249,5 @@ def getTotalAmountRaised():
 def listConnections():
 	s = ""
 	for user in User.objects:
-		s += (user.firstname) + "\n"
+		s += (user.displayName) + "\n"
 	return s
