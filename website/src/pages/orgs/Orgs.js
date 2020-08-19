@@ -3,7 +3,6 @@ import "./Orgs.css";
 import MenuBar from 'components/menubar/MenuBar.js';
 
 export default () => {
-  console.log("Hello");
 
   return (
     <>
