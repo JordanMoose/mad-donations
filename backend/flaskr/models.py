@@ -28,8 +28,7 @@ class Transaction(Document):
 
 class User(Document):
     userID = ObjectIdField()
-    firstname = StringField()
-    lastname = StringField()
+    displayName = StringField()
     email = EmailField()
     supportedCauses = ListField(StringField())
     transactions = ListField(ReferenceField(Transaction))
