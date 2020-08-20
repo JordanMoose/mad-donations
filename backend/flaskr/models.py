@@ -17,6 +17,7 @@ class Cause(Document):
 
 class Organization(Document):
     name = StringField()
+    mission = StringField()
     causes = ListField(ReferenceField(Cause))
     monthsActive = ListField(StringField()) # e.g., January 2020
     totalRaised = FloatField()
@@ -31,6 +32,7 @@ class Subscription(Document):
 class Transaction(Document):
     time = DateTimeField()
     amount = FloatField()
+    subscription = ReferenceField(Subscription) # the subscription that caused this transaction
     cause = ReferenceField(Cause)
     org = ReferenceField(Organization)
     meta = {'collection': 'transactions'}
