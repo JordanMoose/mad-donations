@@ -1,0 +1,24 @@
+.main {
+	margin: 20px 200px;
+
+	.subtitle {
+		text-align: center;
+		margin-bottom: 20px;
+	}
+
+	.body {
+		display: flex;
+		justify-content: space-between;
+
+		Form {
+			width: 40%;
+			flex: 1 1;
+			margin-right: 20px;
+		}
+
+		.side-pic {
+			width: 40%;
+			flex: 1 1;
+		}
+	}
+}
