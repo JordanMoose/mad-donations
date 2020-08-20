@@ -143,7 +143,7 @@ def getUserCauses(email):
 	except:
 		return "An unknown error occurred."
 	
-	return str(user.supportedCauses)
+	return str(user.supportedCauses).replace("'", '"')
 
 @app.route("/user/<string:email>/activeSubscriptions/", methods=["GET"])
 def getUserActiveSupscriptions(email):
