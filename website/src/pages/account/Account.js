@@ -2,25 +2,15 @@ import React, { useState, useEffect, useContext } from "react";
 import "./Account.css";
 import MenuBar from 'components/menubar/MenuBar.js';
 import { UserContext } from 'providers/UserProvider';
-import {Card, Button, Dropdown} from 'react-bootstrap';
+import {Nav, Tab, Row, Col} from 'react-bootstrap';
 import SubscriptionCard from 'components/subscriptionCards/SubscriptionCard.js';
+import Settings from "./Settings.js"
 
 export default () => {
   const user = useContext(UserContext);
   return (
     <>
       <MenuBar activeTab="account" />
-      <Dropdown>
-        <Dropdown.Toggle id="dropdown-basic">
-          Account Settings
-        </Dropdown.Toggle>
-        <Dropdown.Menu>
-          <Dropdown.Item href="#/action-1">Change Name</Dropdown.Item>
-          <Dropdown.Item href="#/action-2">Change Password</Dropdown.Item>
-          <Dropdown.Item href="#/action-3">Change Email</Dropdown.Item>
-        </Dropdown.Menu>
-
-      </Dropdown>
       <div>
         {user ? 
         <>
@@ -31,25 +21,30 @@ export default () => {
         <div>No User Signed in</div>
         }
       </div>
-      <div className="all-subscriptions">
-        <div className = "subcategory">
-          <h2>Active Subscriptions</h2>
-          <div className="card-holder">
-            <SubscriptionCard name='danielle' active={true}/>
-            <SubscriptionCard name='WWE' active={true}/>
-          </div>
-        </div>
-        <div className= "subcategory">
-          <h2>Previous Subscriptions</h2>
-          <div className="card-holder">
-          <SubscriptionCard name='danielle' active={false}/>
-          <SubscriptionCard name='danielle'active={false}/>
-          <SubscriptionCard name='adam'active={false}/>
-          <SubscriptionCard name='mooseman'active={false}/>
-          </div>
-        </div>
-        
-      </div>
+      <Tab.Container id="sidebar" defaultActiveKey="subscriptions">
+        <Row>
+          <Col sm={2}>
+            <Nav variant="pills" className="side-column">
+              <Nav.Item>
+                <Nav.Link eventKey="subscriptions">Subscriptions</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="settings">Settings</Nav.Link>
+              </Nav.Item>
+            </Nav>
+          </Col>
+          <Col sm={9}>
+            <Tab.Content>
+              <Tab.Pane eventKey="subscriptions">
+                <SubscriptionCard name="Adam"></SubscriptionCard>
+              </Tab.Pane>
+              <Tab.Pane eventKey="settings">
+                <Settings/>
+              </Tab.Pane>
+            </Tab.Content>
+          </Col>
+        </Row>
+      </Tab.Container>
     </>
   );
 };
