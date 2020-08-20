@@ -7,11 +7,9 @@ export default () => {
 
   return (
     <>
-        <head>
-            <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
-            <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
-        </head>
-        <body>
+          <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
+          <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
+          
           <MenuBar activeTab="login"/>
           <h1>Create an Account</h1>
           <Modal.Dialog>
@@ -23,7 +21,6 @@ export default () => {
             </Modal.Body>
           </Modal.Dialog>
           <div id="loader">Loading...</div>
-        </body>
     </>
   );
 };
