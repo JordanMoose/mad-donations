@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
+  Alert,
   Carousel,
   Card
 } from 'react-bootstrap';
@@ -81,6 +82,7 @@ export default () => {
         </div>
         <h1>Get started</h1>
         <p className="get-started"><a href="/login">Create an account</a> and choose your monthly contribution.</p>
+        <Alert variant='light'>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></Alert>
       </div>
     </>
   );
