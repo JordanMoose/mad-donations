@@ -1,11 +1,9 @@
 from mongoengine import (
     Document,
-    EmbeddedDocument,
     StringField,
-    ObjectIdField,
     FloatField,
     EmailField,
-    EmbeddedDocumentListField,
+    URLField,
     ReferenceField,
     DateTimeField,
     ListField
@@ -18,6 +16,7 @@ class Cause(Document):
 class Organization(Document):
     name = StringField()
     mission = StringField()
+    link = URLField()
     causes = ListField(ReferenceField(Cause))
     monthsActive = ListField(StringField()) # e.g., January 2020
     totalRaised = FloatField()

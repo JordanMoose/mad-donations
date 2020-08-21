@@ -1,0 +1,113 @@
+[
+	{
+		"name": "Center for Disaster Philanthropy",
+		"mission": "The Center for Disaster Philanthropy holds a vision of a world where the impact of disasters is minimized by thoughtful, equitable and responsible recovery for all. Our mission is to leverage the power of philanthropy to mobilize a full range of resources that strengthen the ability of communities to withstand disasters and recover equitably when they occur.",
+		"link": "https://disasterphilanthropy.org",
+		"causes": [
+			"5f3f104f6892f2daeeb8ab1b",
+			"5f3f105f6892f2daeeb8ab1c"
+		],
+		"monthsActive": [
+			"September 2020"
+		],
+		"totalRaised": 0
+	},
+	{
+		"name": "Equal Justice Initiative",
+		"mission": "EJI is committed to ending mass incarceration and excessive punishment in the United States, to challenging racial and economic injustice, and to protecting basic human rights for the most vulnerable people in American society.",
+		"link": "https://eji.org",
+		"causes": [
+			"5f3f0f0a6892f2daeeb8ab13"
+		],
+		"monthsActive": [
+			"September 2020"
+		],
+		"totalRaised": 0
+	},
+	{
+		"name": "The Trevor Project",
+		"mission": "The Trevor Project offers accredited life-saving, life-affirming programs and services to LGBTQ youth that create safe, accepting and inclusive environments over the phone, online and through text.",
+		"link": "https://www.thetrevorproject.org/",
+		"causes": [
+			"5f3f0f3a6892f2daeeb8ab14",
+			"5f3f10466892f2daeeb8ab1a"
+		],
+		"monthsActive": [
+			"September 2020"
+		],
+		"totalRaised": 0
+	},
+	{
+		"name": "Rainforest Trust",
+		"mission": "Established in 1988, Rainforest Trust works around the tropics to strategically purchase and protect lands vital for endangered species and indigenous communities. We specifically target the most threatened tropical habitats that are critical for preventing species extinctions and that are exceptionally rich in biological diversity. Celebrating 30 years of lasting conservation action, we are proud to have saved more than 2 million acres of tropical habitat across 53 countries in 150 protected areas and wildlife reserves.",
+		"link": "https://www.rainforesttrust.org",
+		"causes": [
+			"5f3f0f6a6892f2daeeb8ab15"
+		],
+		"monthsActive": [
+			"September 2020"
+		],
+		"totalRaised": 0
+	},
+	{
+		"name": "Family Promise",
+		"mission": "Family Promise develops community-based Affiliate programs that serve children and families experiencing or at risk of homelessness and provides ongoing support for these Affiliates to empower families to achieve and maintain their sustainable independence. Family Promise provides technical assistance and expertise to a national network of more than 200 Affiliates in 43 states, mobilizing 200,000 volunteers, and serving approximately 125,000 homeless family members each year. Our comprehensive model includes prevention, shelter, and stabilization programs to address the range of issues affecting low-income families and families experiencing homelessness to help them rebuild their lives and find independent, sustainable housing.",
+		"link": "https://familypromise.org",
+		"causes": [
+			"5f3f0f9a6892f2daeeb8ab16"
+		],
+		"monthsActive": [
+			"September 2020"
+		],
+		"totalRaised": 0
+	},
+	{
+		"name": "Fisher Center for Alzheimer's Research Foundation",
+		"mission": "The Fisher Center for Alzheimer's Research Foundation is a leading source of funding for Alzheimer's research. We actively raise funds to serve Alzheimer's patients and their families by seeking to understand the causes of, discover a cure for, and improve the lives of people with Alzheimer's disease.",
+		"link": "https://www.alzinfo.org",
+		"causes": [
+			"5f3f101c6892f2daeeb8ab18"
+		],
+		"monthsActive": [
+			"September 2020"
+		],
+		"totalRaised": 0
+	},
+	{
+		"name": "Florida Breast Cancer Foundation",
+		"mission": "Florida Breast Cancer Foundation funds education programs in underserved communities throughout the state in an effort to empower women and men to take control of their breast health and reduce the number of breast cancer related deaths in the state of Florida. Florida Breast Cancer Foundation is also committed to funding innovative research to discover more effective ways to diagnose, treat, and cure breast cancer.",
+		"link": "https://www.floridabreastcancer.org",
+		"causes": [
+			"5f3f10386892f2daeeb8ab19"
+		],
+		"monthsActive": [
+			"September 2020"
+		],
+		"totalRaised": 0
+	},
+	{
+		"name": "The Jed Foundation",
+		"mission": "JED is a nonprofit that exists to protect emotional health and prevent suicide for our nation's teens and young adults. We're partnering with high schools and colleges to strengthen their mental health, substance abuse and suicide prevention programs and systems. We're equipping teens and young adults with the skills and knowledge to help themselves and each other. We're encouraging community awareness, understanding and action for young adult mental health.",
+		"link": "https://www.jedfoundation.org",
+		"causes": [
+			"5f3f10466892f2daeeb8ab1a"
+		],
+		"monthsActive": [
+			"September 2020"
+		],
+		"totalRaised": 0
+	},
+	{
+		"name": "Doctors Without Borders/Médecins Sans Frontières",
+		"mission": "Doctors Without Borders/Médecins Sans Frontières (MSF) is an international medical humanitarian organization that provides aid in nearly 60 countries to people whose survival is threatened by violence, neglect, or catastrophe, primarily due to armed conflict, epidemics, malnutrition, exclusion from health care, or natural disasters.",
+		"link": "https://www.doctorswithoutborders.org",
+		"causes": [
+			"5f3f104f6892f2daeeb8ab1b",
+			"5f3f105f6892f2daeeb8ab1c"
+		],
+		"monthsActive": [
+			"September 2020"
+		],
+		"totalRaised": 0
+	}
+]
