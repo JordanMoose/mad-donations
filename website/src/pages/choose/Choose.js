@@ -12,7 +12,7 @@ export default () => {
       <MenuBar/>
       <div>
         {user == null ? 
-          <div>Loading...</div>
+          <div>No user logged in. You probably shouldn't be here.</div>
 				:
 				<>
           <div>Hello {user.displayName}! Welcome to MAD Donations.</div>
