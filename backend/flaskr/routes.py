@@ -2,7 +2,7 @@ from flask import jsonify, request
 from mongoengine.connection import connect, disconnect
 from mongoengine import DoesNotExist
 from flaskr.server import app
-from flaskr.models import User, Subscription, Transaction
+from flaskr.models import User, Subscription, Transaction, Cause
 import flaskr.constants as const
 
 
@@ -76,6 +76,11 @@ def getOrg(id):
 	return "This is organization %s" % id
 
 
+@app.route("/causes/", methods=["GET"])
+def getAllCauses():
+	return {"Causes": [cause.name for cause in Cause.objects]}
+
+
 #–––––––––––––#
 # User Routes #
 #–––––––––––––#
@@ -90,6 +95,7 @@ def createUser():
 
 	return "User created: %s" % (saved.displayName)
 
+
 @app.route("/user/<string:email>/", methods=["GET"])
 def getUser(email):
 	try:
@@ -99,6 +105,7 @@ def getUser(email):
 	except:
 		return "An unknown error occurred."
 	return str(user)
+
 
 @app.route("/user/<string:email>/", methods=["PATCH"])
 def editUserInfo(email):
@@ -144,6 +151,7 @@ def getUserCauses(email):
 		return "An unknown error occurred."
 	
 	return str(user.supportedCauses).replace("'", '"')
+
 
 @app.route("/user/<string:email>/activeSubscriptions/", methods=["GET"])
 def getUserActiveSupscriptions(email):
