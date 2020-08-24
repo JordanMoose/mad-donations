@@ -7,7 +7,17 @@ import { UserContext } from 'providers/UserProvider';
 export default () => {
     const [submitted, setSubmitted] = useState(false)
     const [userCauses, setUserCauses] = useState([])
-    const causes = ["LGBTQ+ Rights", "Black Lives Matter", "Environmental Rights", "Healthcare", "Gamer Rights"]
+    const [causes, setCauses] = useState([])
+
+    const requestOptions = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+    };
+    fetch("/causes/", requestOptions)
+        .then(res => res.json())
+        .then(causeData => {
+            setCauses(causeData.Causes)
+        });
     
     const user = useContext(UserContext)
 

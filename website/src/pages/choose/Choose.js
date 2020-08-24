@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./Choose.css";
 import MenuBar from 'components/menubar/MenuBar.js'
-import CauseSelect from 'components/login/CauseSelect.js'
+import CauseSelect from 'components/subscribe/CauseSelect.js'
 import { UserContext } from 'providers/UserProvider';
 
 export default () => {
