@@ -37,7 +37,7 @@ export default () => {
         <ListGroup variant="flush">
           {(featOrgs.map((orgData, i) => 
             <ListGroup.Item className="org" key={i}>
-              <Image className="org-pic" src={holder} rounded />
+              <Image className="org-pic" src={orgData.imageLink} rounded />
               <div className="org-info">
                 <h4><a className="org-title" href={orgData.link}>{orgData.name}</a></h4>
                 <p className="org-desc">
@@ -51,7 +51,7 @@ export default () => {
         <ListGroup variant="flush">
           {(nonFeatOrgs.map((orgData, i) => 
             <ListGroup.Item className="org" key={i}>
-              <Image className="org-pic" src={holder} rounded />
+              <Image className="org-pic" src={orgData.imageLink} rounded />
               <div className="org-info">
                 <h4><a className="org-title" href={orgData.link}>{orgData.name}</a></h4>
                 <p className="org-desc">
