@@ -2,6 +2,7 @@ from mongoengine import (
     Document,
     StringField,
     FloatField,
+    BooleanField,
     EmailField,
     URLField,
     ReferenceField,
@@ -20,6 +21,7 @@ class Organization(Document):
     causes = ListField(ReferenceField(Cause))
     monthsActive = ListField(StringField()) # e.g., January 2020
     totalRaised = FloatField()
+    featured = BooleanField()
     meta = {'collection': 'orgs'}
 
 class Subscription(Document):
