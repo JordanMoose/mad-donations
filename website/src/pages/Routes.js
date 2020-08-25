@@ -5,7 +5,7 @@ import Account from "./account/Account"
 import Contact from "./contact/Contact"
 import Login from "./login/Login"
 import LoginRedirect from "./login/LoginRedirect"
-import Choose from "./login/Choose"
+import Choose from "./choose/Choose"
 import Orgs from "./orgs/Orgs"
 import Subscribe from "./subscribe/Subscribe";
 import Home from './home/Home'

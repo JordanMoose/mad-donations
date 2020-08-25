@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { Form, Button } from 'react-bootstrap';
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import './CauseSelect.css';
 import { UserContext } from 'providers/UserProvider';
@@ -6,7 +7,7 @@ import { UserContext } from 'providers/UserProvider';
 export default () => {
     const [submitted, setSubmitted] = useState(false)
     const [userCauses, setUserCauses] = useState([])
-    const causes = ["LGBTQ+ Rights", "Black Lives Matter", "Environmental Rights", "Healthcare"]
+    const causes = ["LGBTQ+ Rights", "Black Lives Matter", "Environmental Rights", "Healthcare", "Gamer Rights"]
     
     const user = useContext(UserContext)
 
@@ -47,16 +48,14 @@ export default () => {
 
     return (
         <div className="cause-sel-wrapper">
-            <form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit}>
                 {(causes.map((name, i) => 
                     <div key={i}>
-                        <input type="checkbox" value={name} onChange={handleChange}/>
-                        <label>{name}</label>
-                        <br />
+                        <Form.Check type="checkbox" value={name} label={name} onChange={handleChange}/>
                     </div>
                 ))}
-                <input type="submit" value="Submit"/>
-            </form>
+                <Button type="submit">Submit</Button>
+            </Form>
         </div>
     )
 }
