@@ -11,16 +11,6 @@ export default () => {
   return (
     <>
       <MenuBar activeTab="account" />
-      <div>
-        {user ? 
-        <>
-          <div>Your name is {user.displayName}</div>
-          <div>Your email is {user.email}</div> 
-        </>
-        : 
-        <div>No User Signed in</div>
-        }
-      </div>
       <Tab.Container id="sidebar" defaultActiveKey="subscriptions">
         <Row>
           <Col sm={2}>
@@ -39,7 +29,7 @@ export default () => {
                 <SubscriptionCard name="Adam"></SubscriptionCard>
               </Tab.Pane>
               <Tab.Pane eventKey="settings">
-                <Settings/>
+                <Settings />
               </Tab.Pane>
             </Tab.Content>
           </Col>
