@@ -2,7 +2,7 @@ from flask import jsonify, request
 from mongoengine.connection import connect, disconnect
 from mongoengine import DoesNotExist
 from flaskr.server import app
-from flaskr.models import User, Subscription, Transaction
+from flaskr.models import User, Subscription, Transaction, Organization
 import flaskr.constants as const
 
 
@@ -23,57 +23,22 @@ def resetMongo():
 	return "Maybe disconnected from Mongo"
 
 
-# Test endpoint to get React, Flask, and Mongo hooked up
-@app.route("/getUser/id/<string:id>/")
-def getUserById(id):
-	return {
-		'_id': "512123",
-		'name': "danielle"
-	}
-
-
-@app.route("/getUser/name/<string:name>/")
-def getUserByName(name):
-	return {
-		'_id': '1234',
-		'firstName': 'Adam',
-		'lastName': 'Ash'
-	}
-
-
-@app.route("/home/")
-def home():
-	return "This is the homepage"
-
-
-@app.route("/login/")
-def login():
-	return "This is the login page"
-
-
-@app.route("/account/")
-def account():
-	return "You shouldn't be here!"
-
-
-@app.route("/account/<int:id>/")
-def getInfo(id):
-	return "This is account %s" % id
-
-
-@app.route("/orgs/")
+#–––––––––––––––––––––#
+# Organization Routes #
+#–––––––––––––––––––––#
+@app.route("/orgs/", methods=["GET"])
 def orgs():
-	return "Here are all of our orgs"
+	return Organization.objects().to_json()
 
 	
-@app.route("/orgs/featured/")
+@app.route("/orgs/featured/", methods=["GET"])
 def featuredOrgs():
-	return "Here are our featured organizations of the month."
-	
+	return Organization.objects(featured=True).to_json()
 
-@app.route("/orgs/<int:id>")
-def getOrg(id):
-	return "This is organization %s" % id
+
+@app.route("/orgs/nonfeatured/", methods=["GET"])
+def nonfeaturedOrgs():
+	return Organization.objects(featured=False).to_json()
 
 
 #–––––––––––––#
