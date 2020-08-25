@@ -1,9 +1,8 @@
-<<<<<<< HEAD
-import React, { useState, useContext } from 'react';
-import { Form, Button } from 'react-bootstrap';
-=======
 import React, { useState, useEffect, useContext } from 'react';
->>>>>>> 7b4763d... put causes request inside useEffect so it's only run once when the page is loaded
+import {
+    Form,
+    Button
+} from 'react-bootstrap';
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import './CauseSelect.css';
 import { UserContext } from 'providers/UserProvider';
