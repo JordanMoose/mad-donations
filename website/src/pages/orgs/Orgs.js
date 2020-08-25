@@ -42,7 +42,7 @@ export default () => {
                 <h4 className="org-title">{orgData.name}</h4>
                 <p className="org-desc">
                   {orgData.mission}
-              </p>
+                </p>
               </div>
             </ListGroup.Item>
           ))}
@@ -56,7 +56,7 @@ export default () => {
                 <h4 className="org-title">{orgData.name}</h4>
                 <p className="org-desc">
                   {orgData.mission}
-              </p>
+                </p>
               </div>
             </ListGroup.Item>
           ))}

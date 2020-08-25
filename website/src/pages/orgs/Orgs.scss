@@ -5,13 +5,19 @@
 		margin: 20px 0;
 	}
 
-	.org-pic {
-		width: 250px;
-	}
+	.org {
+		display: flex;
 
-	.org-info {
-		display: inline-block;
-		vertical-align: top;
-		margin-left: 10px;
+		.org-pic {
+			width: 250px;
+		}
+
+		.org-info {
+			margin-left: 10px;
+
+			.org-desc {
+				text-align: justify;
+			}
+		}
 	}
 }
