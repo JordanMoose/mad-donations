@@ -110,6 +110,8 @@ def editUserInfo(email):
 		return "An unknown error occurred."
 
 	updateData = request.json
+	app.logger.info(updateData)
+	app.logger.info("hellllllo")
 	for k, v in updateData.items():
 		user[k] = v
 	try:

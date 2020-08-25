@@ -39,7 +39,7 @@ export default () => {
           <ListGroup.Item className="creator">
             <Image className="creator-pic" src={daniellePic} rounded />
             <p className="creator-info">
-              Description
+              Adam is a senior at UC Berkeley studying Electrical Engineering and Computer Science.
             </p>
             <div className="creator-name">Danielle Lurie</div>
           </ListGroup.Item>
