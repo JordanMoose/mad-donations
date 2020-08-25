@@ -15,6 +15,14 @@
 		.org-info {
 			margin-left: 10px;
 
+			.org-title {
+				color: black;
+			}
+
+			.org-title:hover {
+				text-decoration: none;
+			}
+
 			.org-desc {
 				text-align: justify;
 			}

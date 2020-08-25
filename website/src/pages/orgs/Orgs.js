@@ -39,7 +39,7 @@ export default () => {
             <ListGroup.Item className="org" key={i}>
               <Image className="org-pic" src={holder} rounded />
               <div className="org-info">
-                <h4 className="org-title">{orgData.name}</h4>
+                <h4><a className="org-title" href={orgData.link}>{orgData.name}</a></h4>
                 <p className="org-desc">
                   {orgData.mission}
                 </p>
@@ -53,7 +53,7 @@ export default () => {
             <ListGroup.Item className="org" key={i}>
               <Image className="org-pic" src={holder} rounded />
               <div className="org-info">
-                <h4 className="org-title">{orgData.name}</h4>
+                <h4><a className="org-title" href={orgData.link}>{orgData.name}</a></h4>
                 <p className="org-desc">
                   {orgData.mission}
                 </p>
